@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       name:
-        type: choice
+        type: multi-choice
         description: Who to greet
         options:
         - monalisa
