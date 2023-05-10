@@ -36,3 +36,11 @@ jobs:
     steps:
     - name: Send greeting
       run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", ""]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
+
+  get-tick: 
+    runs-on: ubuntu-latest
+  
+    steps:
+    - name: Get ticked checkbox
+      run: |
+        
