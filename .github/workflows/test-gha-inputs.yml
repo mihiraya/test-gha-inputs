@@ -49,6 +49,8 @@ jobs:
           if ${{ github.event.inputs.fmstatus }} 
           then
              echo "hello"
+          else 
+             echo "no tick"
           fi
           
         
