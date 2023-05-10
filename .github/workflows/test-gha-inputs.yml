@@ -17,7 +17,7 @@ on:
       use-emoji:
         type: boolean
         description: Include  emojis
-      fmStatus: 
+      fmstatus: 
         type: boolean
         description: fmstatus.json
       appupgrade: 
@@ -46,11 +46,9 @@ jobs:
     steps:
     - name: Get ticked checkbox
       run: |
-          if [ ${{ fromJSON('["", ""]')[github.event.inputs.use-emoji == 'true'] }} ]
+          if ${{ github.event.inputs.fmstatus }} 
           then
-            echo "fmststatus tick"
-          else [github.event.inputs.appupgrade == 'true']
-            echo "appupgrade tick"
+             echo "hello"
           fi
           
         
