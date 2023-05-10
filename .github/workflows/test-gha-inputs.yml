@@ -1,5 +1,8 @@
 name: Mixed inputs
-
+defaults:
+   run: 
+      shell: bash
+      
 on:
   workflow_dispatch:
     inputs:
@@ -43,7 +46,7 @@ jobs:
     steps:
     - name: Get ticked checkbox
       run: |
-          if [github.event.inputs.fmstatus == 'true'] ; then
+          if [github.event.inputs.fmstatus == 'true']; then
             echo "fmststatus tick"
           else [github.event.inputs.appupgrade == 'true'] ; then
             echo "appupgrade tick"
