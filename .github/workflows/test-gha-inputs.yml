@@ -14,12 +14,18 @@ on:
       use-emoji:
         type: boolean
         description: Include  emojis
-      fmStatus.json: 
+      fmStatus: 
         type: boolean
-        description: Include fmstatus.json
-      appupgrade.json: 
+        description: fmstatus.json
+      appupgrade: 
         type: boolean
-        description: Include appupgrade.json
+        description: appupgrade.json
+      flagshipappupgrade:
+        type: boolean
+        description: app/upgrade/flagshipappupgrade.json
+      stubflagshipappupgrade:
+        type: boolean
+        description: app/upgrade/stubflagshipappupgrade.json
       environment:
         type: environment
 
