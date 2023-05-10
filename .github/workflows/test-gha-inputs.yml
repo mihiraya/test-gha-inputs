@@ -46,11 +46,36 @@ jobs:
     steps:
     - name: Get ticked checkbox
       run: |
+      
+          # Declare Array Variable
+          FILES_TO_UPLOAD=()
+          
           if ${{ github.event.inputs.fmstatus }} 
           then
              echo "hello"
+             FILES_TO_UPLOAD+=("fmstatus")
           else 
              echo "no tick"
           fi
+          
+          if ${{ github.event.inputs.appupgrade }} 
+          then
+             echo "hello"
+             FILES_TO_UPLOAD+=("appupgrade")
+          else 
+             echo "no tick"
+          fi
+          
+          # Iterate the loop to read and print each array element
+          for value in "${FILES_TO_UPLOAD[@]}"
+          do
+            echo $value
+          done
+
+          
+          
+          
+          
+          
           
         
