@@ -46,7 +46,7 @@ jobs:
     steps:
     - name: Get ticked checkbox
       run: |
-          if [github.event.inputs.fmstatus == 'true'] 
+          if [ ${{ fromJSON('["", ""]')[github.event.inputs.use-emoji == 'true'] }} ]
           then
             echo "fmststatus tick"
           else [github.event.inputs.appupgrade == 'true']
