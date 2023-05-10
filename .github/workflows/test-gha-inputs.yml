@@ -60,6 +60,16 @@ jobs:
              FILES_TO_UPLOAD+=("appupgrade")
           fi
           
+          if ${{ github.event.inputs.flagshipappupgrade }} 
+          then
+             FILES_TO_UPLOAD+=("flagshipappupgrade")
+          fi
+          
+          if ${{ github.event.inputs.stubflagshipappupgrade }} 
+          then
+             FILES_TO_UPLOAD+=("stubflagshipappupgrade")
+          fi
+          
           # Iterate the loop to read and print each array element
           echo "==================================================================="
           echo "Files to upload"
