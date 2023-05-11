@@ -6,14 +6,16 @@ defaults:
 on:
   workflow_dispatch:
     inputs:
-      name:
+      # Input: Choice
+      environment_deploy:
         type: choice
-        description: Who to greet
+        description: Choose Environment
         options:
-        - monalisa
-        - cschleiden
-      message:
-        required: true
+        - Production
+        - Staging
+        - Development
+        
+      # Input: Checkbox  
       fmstatus: 
         type: boolean
         description: smps-in-fm/etc/fmStatus.json
@@ -26,9 +28,12 @@ on:
       stubflagshipappupgrade:
         type: boolean
         description: app/upgrade/stubflagshipappupgrade.json
+      
+      # ---------------
       environment:
         type: environment
-        
+     
+      # Input: Textbox
       confirm_upload:
         description: "Please Confirm Upload by typing [confirm upload]"
         required: true
@@ -39,7 +44,7 @@ jobs:
 
     steps:
     - name: Send greeting
-      run: echo "${{ github.event.inputs.message }} ${{ github.event.inputs.name }}"
+      run: echo "${{ github.event.inputs.name }}"
 
   get-tick: 
     runs-on: ubuntu-latest
@@ -91,7 +96,7 @@ jobs:
 
     - name: "Test Message Box"
       run: |
-        if [ ${{ github.event.inputs.confirm_upload }} == "confirm upload" ]
+        if [ "${{ github.event.inputs.confirm_upload }}" == "confirm upload" ]
         then
              echo "Let's Upload"
         else 
