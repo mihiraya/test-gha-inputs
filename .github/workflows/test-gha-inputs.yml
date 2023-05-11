@@ -28,6 +28,10 @@ on:
         description: app/upgrade/stubflagshipappupgrade.json
       environment:
         type: environment
+        
+      confirm_upload:
+        description: "Please Confirm Upload by typing [confirm upload]"
+        required: true
 
 jobs:
   greet:
@@ -84,7 +88,18 @@ jobs:
           #----------------------------------------------------------------
           echo "::set-output name=GH_FILES_TO_UPLOAD::${FILES_TO_UPLOAD[@]}" 
           #echo ${FILES_TO_UPLOAD} >> $GITHUB_OUTPUT
+
+    - name: "Test Message Box"
+      run: |
+        if [ ${{ github.event.inputs.message }} == "confirm upload" ]
+        then
+             echo "Let's Upload"
+        else 
+             echo "cancelled Upload
+        fi
           
+       
+    
           
   # ------------------------------------------------------------------------------------------
   # Third Job
