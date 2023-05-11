@@ -35,7 +35,7 @@ jobs:
 
     steps:
     - name: Send greeting
-      run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", ""]')[github.event.inputs.fmstatus == 'true'] }} ${{ github.event.inputs.name }}"
+      run: echo "${{ github.event.inputs.message }} ${{ github.event.inputs.name }}"
 
   get-tick: 
     runs-on: ubuntu-latest
