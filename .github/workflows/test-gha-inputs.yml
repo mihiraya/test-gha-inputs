@@ -14,15 +14,12 @@ on:
         - cschleiden
       message:
         required: true
-      use-emoji:
-        type: boolean
-        description: Include  emojis
       fmstatus: 
         type: boolean
-        description: fmstatus.json
+        description: smps-in-fm/etc/fmStatus.json
       appupgrade: 
         type: boolean
-        description: appupgrade.json
+        description: app/upgrade/appupgrade.json
       flagshipappupgrade:
         type: boolean
         description: app/upgrade/flagshipappupgrade.json
@@ -38,7 +35,7 @@ jobs:
 
     steps:
     - name: Send greeting
-      run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", ""]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
+      run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", ""]')[github.event.inputs.fmstatus == 'true'] }} ${{ github.event.inputs.name }}"
 
   get-tick: 
     runs-on: ubuntu-latest
