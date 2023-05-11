@@ -82,7 +82,7 @@ jobs:
           #----------------------------------------------------------------
           # Store to GHA Output
           #----------------------------------------------------------------
-          echo "::set-output name=GH_FILES_TO_UPLOAD::${FILES_TO_UPLOAD}" 
+          echo "::set-output name=GH_FILES_TO_UPLOAD::${FILES_TO_UPLOAD[@]}" 
           #echo ${FILES_TO_UPLOAD} >> $GITHUB_OUTPUT
           
           
