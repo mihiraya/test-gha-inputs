@@ -91,11 +91,11 @@ jobs:
 
     - name: "Test Message Box"
       run: |
-        if [ ${{ github.event.inputs.message }} == "confirm upload" ]
+        if [ ${{ github.event.inputs.confirm_upload }} == "confirm upload" ]
         then
              echo "Let's Upload"
         else 
-             echo "cancelled Upload
+             echo "cancelled Upload"
         fi
           
        
