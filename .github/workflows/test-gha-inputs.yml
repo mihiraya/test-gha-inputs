@@ -42,9 +42,12 @@ jobs:
 
   get-tick: 
     runs-on: ubuntu-latest
+    outputs: 
+      GH_FILES_TO_UPLOAD: ${{ steps.get_ticked_files_to_upload.outputs.files_to_upload }}
   
     steps:
     - name: Get ticked checkbox
+      id: get_ticked_files_to_upload
       run: |
       
           # Declare Array Variable
@@ -78,8 +81,27 @@ jobs:
           do
             echo  $value
           done
-
           
+          #----------------------------------------------------------------
+          # Store to GHA Output
+          #----------------------------------------------------------------
+          echo "::set-output name=GH_FILES_TO_UPLOAD::${FILES_TO_UPLOAD}" 
+          
+          
+  # ------------------------------------------------------------------------------------------
+  # Third Job
+  # ------------------------------------------------------------------------------------------ 
+  s3_upload:
+    name: S3 Upload
+    # Run on Group of GHA Runners 
+    runs-on: [ code-default ]
+    needs: get-tick
+    
+    steps: 
+    - name: echo
+      run: |
+         echo ${{ needs.get-tick.outputs.GH_FILES_TO_UPLOAD }}
+
           
           
           
