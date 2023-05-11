@@ -100,7 +100,7 @@ jobs:
     steps: 
     - name: echo
       run: |
-         echo ${{ needs.get-tick.outputs.GH_FILES_TO_UPLOAD }}
+         echo "${{ needs.get-tick.outputs.GH_FILES_TO_UPLOAD }}"
 
           
           
