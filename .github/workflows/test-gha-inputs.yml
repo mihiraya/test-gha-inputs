@@ -40,7 +40,7 @@ jobs:
   get-tick: 
     runs-on: ubuntu-latest
     outputs: 
-      GH_FILES_TO_UPLOAD: ${{ steps.get_ticked_files_to_upload.outputs.FILES_TO_UPLOAD }}
+      GH_FILES_TO_UPLOAD: ${{ steps.get_ticked_files_to_upload.outputs.GH_FILES_TO_UPLOAD }}
   
     steps:
     - name: Get ticked checkbox
@@ -82,8 +82,8 @@ jobs:
           #----------------------------------------------------------------
           # Store to GHA Output
           #----------------------------------------------------------------
-          #echo "::set-output name=GH_FILES_TO_UPLOAD::${FILES_TO_UPLOAD}" 
-          echo ${FILES_TO_UPLOAD} >> $GITHUB_OUTPUT
+          echo "::set-output name=GH_FILES_TO_UPLOAD::${FILES_TO_UPLOAD}" 
+          #echo ${FILES_TO_UPLOAD} >> $GITHUB_OUTPUT
           
           
   # ------------------------------------------------------------------------------------------
@@ -98,7 +98,7 @@ jobs:
     steps: 
     - name: echo
       run: |
-         echo "${{ needs.get-tick.outputs.FILES_TO_UPLOAD }}"
+         echo "${{ needs.get-tick.outputs.GH_FILES_TO_UPLOAD }}"
 
           
           
