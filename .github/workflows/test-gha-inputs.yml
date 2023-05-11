@@ -99,10 +99,3 @@ jobs:
     - name: echo
       run: |
          echo "${{ needs.get-tick.outputs.GH_FILES_TO_UPLOAD }}"
-
-          
-          
-          
-          
-          
-        
