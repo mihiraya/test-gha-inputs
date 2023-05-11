@@ -43,7 +43,7 @@ jobs:
   get-tick: 
     runs-on: ubuntu-latest
     outputs: 
-      GH_FILES_TO_UPLOAD: ${{ steps.get_ticked_files_to_upload.outputs.files_to_upload }}
+      GH_FILES_TO_UPLOAD: ${{ steps.get_ticked_files_to_upload.outputs.FILES_TO_UPLOAD }}
   
     steps:
     - name: Get ticked checkbox
