@@ -98,4 +98,14 @@ jobs:
     steps: 
     - name: echo
       run: |
+         # One Liner Print Code
          echo "${{ needs.get-tick.outputs.GH_FILES_TO_UPLOAD }}"
+         
+         # Iterate the loop to read and print each array element
+          echo "==================================================================="
+          echo "Files to upload"
+          echo "==================================================================="
+          for value in ${{ needs.get-tick.outputs.GH_FILES_TO_UPLOAD }}
+          do
+            echo  $value
+          
