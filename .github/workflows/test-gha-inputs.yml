@@ -108,4 +108,5 @@ jobs:
           for value in ${{ needs.get-tick.outputs.GH_FILES_TO_UPLOAD }}
           do
             echo  $value
+          done
           
