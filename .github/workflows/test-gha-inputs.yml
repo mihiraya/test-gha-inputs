@@ -43,14 +43,11 @@ on:
         required: true
 
 jobs:
-  greet:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Send greeting
-      run: echo "${{ github.event.inputs.name }}"
-
+  # ------------------------------------------------------------------------------------------
+  # First Job
+  # ------------------------------------------------------------------------------------------
   get-tick: 
+    name: "Upload Files Info"
     runs-on: ubuntu-latest
     outputs: 
       GH_FILES_TO_UPLOAD: ${{ steps.get_ticked_files_to_upload.outputs.GH_FILES_TO_UPLOAD }}
@@ -100,9 +97,7 @@ jobs:
           do
             echo  $value
           done
-          
-          
-          
+                
           #----------------------------------------------------------------
           # Store to GHA Output
           #----------------------------------------------------------------
@@ -139,7 +134,7 @@ jobs:
                esac
           done
 
-    - name: "[ Inputs ] Test Message Box"
+    - name: "[ Notify ] Upload Notification"
       run: |
         if [ "${{ github.event.inputs.confirm_upload }}" == "confirm upload" ]
         then
@@ -151,7 +146,7 @@ jobs:
     
           
   # ------------------------------------------------------------------------------------------
-  # Third Job
+  # Second Job
   # ------------------------------------------------------------------------------------------ 
   s3_upload:
     name: S3 Upload
