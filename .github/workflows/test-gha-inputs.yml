@@ -56,7 +56,7 @@ jobs:
       GH_FILES_TO_UPLOAD: ${{ steps.get_ticked_files_to_upload.outputs.GH_FILES_TO_UPLOAD }}
   
     steps:
-    - name: Get ticked checkbox
+    - name: "[ Inputs ] Get files to upload"
       id: get_ticked_files_to_upload
       run: |
       
@@ -108,6 +108,32 @@ jobs:
           #----------------------------------------------------------------
           echo "::set-output name=GH_FILES_TO_UPLOAD::${FILES_TO_UPLOAD[@]}" 
           #echo ${FILES_TO_UPLOAD} >> $GITHUB_OUTPUT
+          
+    - name: "[ Info ] Display all data"
+      run: |
+         # Iterate the loop to read and print each array element
+          echo "==================================================================="
+          echo "Files to upload"
+          echo "==================================================================="
+          for value in ${{ needs.get-tick.outputs.GH_FILES_TO_UPLOAD }}
+          do
+            case $value in 
+            
+            fmStatus.json )
+               target_folder="app/"
+               echo -n "$value :: will be uploaded to smps-in-fm/etc/fmStatus.json"
+            ;;
+            
+            appupgrade.json )
+               target_folder="app/"
+               echo -n "$value :: will be uploaded to app/upgrade/appupgrade.json"
+            ;;
+            
+            * )
+               echo -n "unknown"
+               ;;
+            esac
+          done
 
     - name: "[ Inputs ] Test Message Box"
       run: |
