@@ -122,8 +122,10 @@ jobs:
           
     - name: "[ Info ] Display all data"
       run: |
+         # Declare "Step Level" Array Variable
          FILES_TO_UPLOAD=()
          
+         # Return whether we use INPUT or HARDCODED values in file uploads
          if ${{ github.event.inputs.use_inputs_for_values }} ;
          then 
             echo "We are using Input values"
@@ -133,13 +135,12 @@ jobs:
             FILES_TO_UPLOAD=${{ env.base_file_test }}
          fi
       
-      
          # Iterate the loop to read and print each array element
           echo "==================================================================="
           echo "Files to upload"
           echo "==================================================================="
           #for value in ${{ steps.get_ticked_files_to_upload.outputs.GH_FILES_TO_UPLOAD }}
-          for value in $FILES_TO_UPLOAD
+          for value in "${FILES_TO_UPLOAD[@]}"
           do
             case $value in 
                fmStatus.json)
