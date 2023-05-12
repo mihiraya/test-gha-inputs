@@ -129,7 +129,7 @@ jobs:
          if ${{ github.event.inputs.use_inputs_for_values }} ;
          then 
             echo "We are using Input values"
-            FILES_TO_UPLOAD=${{ steps.get_checked_files_to_upload.outputs.GH_FILES_TO_UPLOAD }}
+            FILES_TO_UPLOAD=${{ steps.get_ticked_files_to_upload.outputs.GH_FILES_TO_UPLOAD }}
          else 
             echo "We are using hardcoded values"
             FILES_TO_UPLOAD=${{ env.base_file_test }}
