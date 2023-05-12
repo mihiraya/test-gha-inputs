@@ -28,15 +28,14 @@ on:
       stubflagshipappupgrade:
         type: boolean
         description: app/upgrade/stubflagshipappupgrade.json
-      
-      # ---------------
-      environment:
-        type: environment
-        
+   
       # Array
+      flywheel_adhoc:
+        type: boolean
+        description: app/flywheel/adhoc/...
+   
       flywheel_adhoc_files:
-        description: "Enter Flywheel Adhoc file/s to upload"
-        default: "file1, file2, ..."
+        description: "Enter Flywheel Adhoc file/s to upload [file1, file2, ...]"
      
       # Input: Textbox
       confirm_upload:
@@ -84,6 +83,14 @@ jobs:
              FILES_TO_UPLOAD+=("stubflagshipappupgrade")
           fi
           
+          # Flywheel 
+          if ${{ github.event.inputs.flywheel_adhoc }} 
+          then
+             # https://www.golinuxcloud.com/bash-split-string-into-array-linux/
+             IFS="," read -a myarray <<< ${{ github.event.inputs.flywheel_adhoc_files }}
+             FILES_TO_UPLOAD+=("myarray")
+          fi
+          
           # Iterate the loop to read and print each array element
           echo "==================================================================="
           echo "Files to upload"
@@ -93,13 +100,15 @@ jobs:
             echo  $value
           done
           
+          
+          
           #----------------------------------------------------------------
           # Store to GHA Output
           #----------------------------------------------------------------
           echo "::set-output name=GH_FILES_TO_UPLOAD::${FILES_TO_UPLOAD[@]}" 
           #echo ${FILES_TO_UPLOAD} >> $GITHUB_OUTPUT
 
-    - name: "Test Message Box"
+    - name: "[ Inputs ] Test Message Box"
       run: |
         if [ "${{ github.event.inputs.confirm_upload }}" == "confirm upload" ]
         then
@@ -107,8 +116,7 @@ jobs:
         else 
              echo "cancelled Upload"
         fi
-          
-       
+         
     
           
   # ------------------------------------------------------------------------------------------
