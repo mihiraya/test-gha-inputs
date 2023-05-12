@@ -115,7 +115,7 @@ jobs:
           echo "==================================================================="
           echo "Files to upload"
           echo "==================================================================="
-          for value in ${{ needs.get-tick.outputs.GH_FILES_TO_UPLOAD }}
+          for value in ${{ steps.get_ticked_files_to_upload.outputs.GH_FILES_TO_UPLOAD }}
           do
             echo $value
             case $value in 
