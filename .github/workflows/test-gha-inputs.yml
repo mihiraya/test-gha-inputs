@@ -32,6 +32,11 @@ on:
       # ---------------
       environment:
         type: environment
+        
+      # Array
+      flywheel_adhoc_files:
+        description: "Enter Flywheel Adhoc file/s to upload"
+        default: "file1, file2, ..."
      
       # Input: Textbox
       confirm_upload:
