@@ -55,6 +55,7 @@ env:
        fmStatus.json
        appupgrade.json
        flagshipappupgrade.json
+       stubflagshipappupgrade.json
        adhocPromotion.json
     )
     
@@ -144,17 +145,17 @@ jobs:
           do
             case $value in 
                fmStatus.json)
-                  target_folder="smps-in-fm/etc"
+                  target_folder="smps-in-fm/etc/"
                   echo "$value :: will be uploaded to ${target_folder}"
                   ;;
                
-               appupgrade.json)
-                  target_folder="app/"
-                  echo "$value :: will be uploaded to app/upgrade"
+               appupgrade.json | flagshipappupgrade.json | stubflagshipappupgrade.json)
+                  target_folder="app/upgrade"
+                  echo "$value :: will be uploaded to ${target_folder}"
                   ;;
-               
+                  
                adhocPromotion*)
-                  target_folder="app/flywheel/adhoc"
+                  target_folder="app/flywheel/adhoc/"
                   echo "$value :: will be uploaded to ${target_folder}"
                   ;;
                
