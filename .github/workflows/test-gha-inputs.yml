@@ -41,6 +41,11 @@ on:
       confirm_upload:
         description: "Please Confirm Upload by typing [confirm upload]"
         required: true
+        
+        
+      # Routing
+      use_inputs_for_values:
+        type: boolean
 
 jobs:
   # ------------------------------------------------------------------------------------------
@@ -169,3 +174,15 @@ jobs:
             echo  $value
           done
           
+  # ------------------------------------------------------------------------------------------
+  # Third Job
+  # ------------------------------------------------------------------------------------------
+  routing:
+    name: route
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.use_inputs_for_values }}
+    
+    steps:
+    - name: echo
+      run: |
+          echo "hello route"
