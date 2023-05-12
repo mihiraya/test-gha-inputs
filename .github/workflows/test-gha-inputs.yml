@@ -77,28 +77,28 @@ jobs:
           # Declare Array Variable
           FILES_TO_UPLOAD=()
           
-          if ${{ github.event.inputs.fmstatus }} 
+          if [ ${{ github.event.inputs.fmstatus }} ] ;
           then
              FILES_TO_UPLOAD+=("fmStatus.json")
           fi
           
-          if ${{ github.event.inputs.appupgrade }} 
+          if [ ${{ github.event.inputs.appupgrade }} ] ;
           then
              FILES_TO_UPLOAD+=("appupgrade.json")
           fi
           
-          if ${{ github.event.inputs.flagshipappupgrade }} 
+          if [ ${{ github.event.inputs.flagshipappupgrade }} ] ;
           then
              FILES_TO_UPLOAD+=("flagshipappupgrade.json")
           fi
           
-          if ${{ github.event.inputs.stubflagshipappupgrade }} 
+          if [ ${{ github.event.inputs.stubflagshipappupgrade }} ] ;
           then
              FILES_TO_UPLOAD+=("stubflagshipappupgrade.json")
           fi
           
           # Flywheel 
-          if ${{ github.event.inputs.flywheel_adhoc }} 
+          if [ ${{ github.event.inputs.flywheel_adhoc }} ] ;
           then
              # https://www.golinuxcloud.com/bash-split-string-into-array-linux/
              # Change comma (,) to whitespace and add under braces
@@ -167,7 +167,7 @@ jobs:
 
     - name: "[ Notify ] Upload Notification"
       run: |
-        if [ "${{ github.event.inputs.confirm_upload }}" == "confirm upload" ]
+        if [ "${{ github.event.inputs.confirm_upload }}" == "confirm upload" ] ;
         then
              echo "Let's Upload"
         else 
