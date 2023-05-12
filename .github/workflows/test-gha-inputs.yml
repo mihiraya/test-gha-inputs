@@ -18,21 +18,21 @@ on:
       # Input: Checkbox  
       fmstatus: 
         type: boolean
-        description: smps-in-fm/etc/fmStatus.json
+        description: fmStatus.json
       appupgrade: 
         type: boolean
-        description: app/upgrade/appupgrade.json
+        description: appupgrade.json
       flagshipappupgrade:
         type: boolean
-        description: app/upgrade/flagshipappupgrade.json
+        description: flagshipappupgrade.json
       stubflagshipappupgrade:
         type: boolean
-        description: app/upgrade/stubflagshipappupgrade.json
+        description: stubflagshipappupgrade.json
    
       # Array
       flywheel_adhoc:
         type: boolean
-        description: app/flywheel/adhoc/...
+        description: Flywheel Adhoc Files
    
       flywheel_adhoc_files:
         description: "Enter Flywheel Adhoc file/s to upload [file1, file2, ...]"
@@ -132,9 +132,10 @@ jobs:
             "adhocPromotion"* )
                target_folder="app/"
                echo -n "$value :: will be uploaded to app/flywheel/adhoc"
+            ;;
             
             * )
-               echo -n "$value unknown"
+               echo -n "$value is unknown"
                ;;
             esac
           done
