@@ -46,7 +46,18 @@ on:
       # Routing
       use_inputs_for_values:
         type: boolean
-
+   
+# Set Global Variable
+env:
+  # Declare HardCoded Files to Upload
+  base_file_test: 
+    ( 
+       fmStatus.json
+       appupgrade.json
+       flagshipappupgrade.json
+       adhocPromotion.json
+    )
+    
 jobs:
   # ------------------------------------------------------------------------------------------
   # First Job
@@ -111,11 +122,24 @@ jobs:
           
     - name: "[ Info ] Display all data"
       run: |
+         FILES_TO_UPLOAD=()
+         
+         if ${{ github.event.inputs.use_inputs_for_values }} ;
+         then 
+            echo "We are using Input values"
+            FILES_TO_UPLOAD=${{ steps.get_checked_files_to_upload.outputs.GH_FILES_TO_UPLOAD }}
+         else 
+            echo "We are using hardcoded values"
+            FILES_TO_UPLOAD=${{ env.base_file_test }}
+         fi
+      
+      
          # Iterate the loop to read and print each array element
           echo "==================================================================="
           echo "Files to upload"
           echo "==================================================================="
-          for value in ${{ steps.get_ticked_files_to_upload.outputs.GH_FILES_TO_UPLOAD }}
+          #for value in ${{ steps.get_ticked_files_to_upload.outputs.GH_FILES_TO_UPLOAD }}
+          for value in $FILES_TO_UPLOAD
           do
             case $value in 
                fmStatus.json)
