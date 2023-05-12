@@ -87,8 +87,9 @@ jobs:
           if ${{ github.event.inputs.flywheel_adhoc }} 
           then
              # https://www.golinuxcloud.com/bash-split-string-into-array-linux/
-             IFS="," read -a myarray <<< ${{ github.event.inputs.flywheel_adhoc_files }}
-             FILES_TO_UPLOAD+=("myarray")
+             # Change comma (,) to whitespace and add under braces
+             myarray=(`echo ${{ github.event.inputs.flywheel_adhoc_files }} | tr ',' ' '`)
+             FILES_TO_UPLOAD+=(${myarray[@]})
           fi
           
           # Iterate the loop to read and print each array element
