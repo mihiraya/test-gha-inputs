@@ -121,17 +121,17 @@ jobs:
                fmStatus.json)
                   target_folder="app/"
                   echo -n "$value :: will be uploaded to smps-in-fm/etc"
-               ;;
+                  ;;
                
                appupgrade.json)
                   target_folder="app/"
                   echo -n "$value :: will be uploaded to app/upgrade"
-               ;;
+                  ;;
                
                "adhocPromotion"*)
                   target_folder="app/"
                   echo -n "$value :: will be uploaded to app/flywheel/adhoc"
-               ;;
+                  ;;
                
                *)
                   echo -n "$value is unknown"
