@@ -117,11 +117,10 @@ jobs:
           echo "==================================================================="
           for value in ${{ steps.get_ticked_files_to_upload.outputs.GH_FILES_TO_UPLOAD }}
           do
-            echo $value
             case $value in 
                fmStatus.json)
-                  target_folder="app/"
-                  echo -n "$value :: will be uploaded to smps-in-fm/etc"
+                  target_folder="smps-in-fm/etc"
+                  echo -n "$value :: will be uploaded to ${target_folder}"
                   ;;
                
                appupgrade.json)
@@ -129,9 +128,9 @@ jobs:
                   echo -n "$value :: will be uploaded to app/upgrade"
                   ;;
                
-               "adhocPromotion"*)
-                  target_folder="app/"
-                  echo -n "$value :: will be uploaded to app/flywheel/adhoc"
+               adhocPromotion*)
+                  target_folder="app/flywheel/adhoc"
+                  echo -n "$value :: will be uploaded to ${target_folder}"
                   ;;
                
                *)
