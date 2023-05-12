@@ -117,6 +117,7 @@ jobs:
           echo "==================================================================="
           for value in ${{ needs.get-tick.outputs.GH_FILES_TO_UPLOAD }}
           do
+            echo  $value
             case $value in 
                fmStatus.json)
                   target_folder="app/"
