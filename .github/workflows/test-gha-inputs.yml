@@ -180,7 +180,8 @@ jobs:
   routing:
     name: route
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.use_inputs_for_values }}
+    if: ${{ github.event.inputs.use_inputs_for_values }} == true
+    needs: get-tick
     
     steps:
     - name: echo
