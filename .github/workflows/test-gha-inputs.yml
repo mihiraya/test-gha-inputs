@@ -120,21 +120,21 @@ jobs:
             case $value in 
                fmStatus.json)
                   target_folder="smps-in-fm/etc"
-                  echo -n "$value :: will be uploaded to ${target_folder}"
+                  echo "$value :: will be uploaded to ${target_folder}"
                   ;;
                
                appupgrade.json)
                   target_folder="app/"
-                  echo -n "$value :: will be uploaded to app/upgrade"
+                  echo "$value :: will be uploaded to app/upgrade"
                   ;;
                
                adhocPromotion*)
                   target_folder="app/flywheel/adhoc"
-                  echo -n "$value :: will be uploaded to ${target_folder}"
+                  echo "$value :: will be uploaded to ${target_folder}"
                   ;;
                
                *)
-                  echo -n "$value is unknown"
+                  echo "$value :: is unknown"
                   ;;
                esac
           done
