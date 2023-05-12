@@ -65,22 +65,22 @@ jobs:
           
           if ${{ github.event.inputs.fmstatus }} 
           then
-             FILES_TO_UPLOAD+=("fmstatus")
+             FILES_TO_UPLOAD+=("fmStatus.json")
           fi
           
           if ${{ github.event.inputs.appupgrade }} 
           then
-             FILES_TO_UPLOAD+=("appupgrade")
+             FILES_TO_UPLOAD+=("appupgrade.json")
           fi
           
           if ${{ github.event.inputs.flagshipappupgrade }} 
           then
-             FILES_TO_UPLOAD+=("flagshipappupgrade")
+             FILES_TO_UPLOAD+=("flagshipappupgrade.json")
           fi
           
           if ${{ github.event.inputs.stubflagshipappupgrade }} 
           then
-             FILES_TO_UPLOAD+=("stubflagshipappupgrade")
+             FILES_TO_UPLOAD+=("stubflagshipappupgrade.json")
           fi
           
           # Flywheel 
@@ -121,16 +121,20 @@ jobs:
             
             fmStatus.json )
                target_folder="app/"
-               echo -n "$value :: will be uploaded to smps-in-fm/etc/fmStatus.json"
+               echo -n "$value :: will be uploaded to smps-in-fm/etc"
             ;;
             
             appupgrade.json )
                target_folder="app/"
-               echo -n "$value :: will be uploaded to app/upgrade/appupgrade.json"
+               echo -n "$value :: will be uploaded to app/upgrade"
             ;;
             
+            "adhocPromotion"* )
+               target_folder="app/"
+               echo -n "$value :: will be uploaded to app/flywheel/adhoc"
+            
             * )
-               echo -n "unknown"
+               echo -n "$value unknown"
                ;;
             esac
           done
