@@ -136,6 +136,16 @@ jobs:
             FILES_TO_UPLOAD=${{ env.base_file_test }}
          fi
       
+         # --------------------------------
+         # Create Function
+         # --------------------------------
+         checkFiles () {
+             file=$1
+             dest=$2
+             echo "$file" 
+             echo "  └─► Will be uploaded to $dest"
+         }
+      
          # Iterate the loop to read and print each array element
           echo "==================================================================="
           echo "Files to upload"
@@ -146,17 +156,20 @@ jobs:
             case $value in 
                fmStatus.json)
                   target_folder="smps-in-fm/etc/"
-                  echo "$value :: will be uploaded to ${target_folder}"
+                  #echo "$value :: will be uploaded to ${target_folder}"
+                  checkFiles $value $target_folder
                   ;;
                
                appupgrade.json | flagshipappupgrade.json | stubflagshipappupgrade.json)
                   target_folder="app/upgrade"
-                  echo "$value :: will be uploaded to ${target_folder}"
+                  #echo "$value :: will be uploaded to ${target_folder}"
+                  checkFiles $value $target_folder
                   ;;
                   
                adhocPromotion*)
                   target_folder="app/flywheel/adhoc/"
-                  echo "$value :: will be uploaded to ${target_folder}"
+                  #echo "$value :: will be uploaded to ${target_folder}"
+                  checkFiles $value $target_folder
                   ;;
                
                *)
