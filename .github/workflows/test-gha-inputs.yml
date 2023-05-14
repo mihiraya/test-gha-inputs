@@ -69,7 +69,9 @@ jobs:
     
     steps:
     - name: Run Hello World Script
-      run: test-gha-inputs/.github/scripts/1-hello-world.sh
+      run: | 
+         ls -lrt
+        #/.github/scripts/1-hello-world.sh
       shell: bash
     
   # ------------------------------------------------------------------------------------------
