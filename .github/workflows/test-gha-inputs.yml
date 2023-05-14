@@ -78,8 +78,8 @@ jobs:
          tree .github
         
          # Execute Script
+         chmod +x .github/scripts/1-hello-world.sh
          ./.github/scripts/1-hello-world.sh
-      
     
   # ------------------------------------------------------------------------------------------
   # First Job
