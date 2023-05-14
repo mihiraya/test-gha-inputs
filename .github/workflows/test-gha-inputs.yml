@@ -73,7 +73,8 @@ jobs:
       
     - name: Run Hello World Script
       run: | 
-         ls -lart
+         ls -lart ./github 
+         tree ./github
         #/.github/scripts/1-hello-world.sh
       shell: bash
     
