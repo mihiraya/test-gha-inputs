@@ -123,6 +123,7 @@ jobs:
           
     - name: "[ Info ] Display all data"
       run: |
+         echo "we are using shell -> $SHELL"
          # Declare "Step Level" Array Variable
          FILES_TO_UPLOAD=()
          
