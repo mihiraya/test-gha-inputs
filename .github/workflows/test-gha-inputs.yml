@@ -84,7 +84,7 @@ jobs:
     - name: Run Scripts with flags
       shell: bash
       run: | 
-          chmod +x .github/scripts/getopts.sh
+         chmod +x .github/scripts/getopts.sh
          ./.github/scripts/getopts.sh --verbose --file Hello-mamam
     
   # ------------------------------------------------------------------------------------------
