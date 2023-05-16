@@ -80,6 +80,11 @@ jobs:
          # Execute Script
          chmod +x .github/scripts/1-hello-world.sh
          ./.github/scripts/1-hello-world.sh
+         
+    - name: Run Scripts with flags
+      shell: bash
+      run: | 
+         ./.github/scripts/getopts.sh --verbose --file Hello-mamam
     
   # ------------------------------------------------------------------------------------------
   # First Job
