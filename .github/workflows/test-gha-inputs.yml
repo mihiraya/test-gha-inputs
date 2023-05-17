@@ -37,7 +37,7 @@ on:
       flywheel_adhoc_files:
         description: "Enter Flywheel Adhoc file/s to upload [file1, file2, ...]"
      
-     flywheel_quickaccess:
+      flywheel_quickaccess:
         type: boolean
         description: Flywheel (Quickaccess)
    
