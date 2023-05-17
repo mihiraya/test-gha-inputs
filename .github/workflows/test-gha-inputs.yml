@@ -32,11 +32,18 @@ on:
       # Array
       flywheel_adhoc:
         type: boolean
-        description: Flywheel Adhoc Files
+        description: Flywheel (Adhoc)
    
       flywheel_adhoc_files:
         description: "Enter Flywheel Adhoc file/s to upload [file1, file2, ...]"
      
+     flywheel_quickaccess:
+        type: boolean
+        description: Flywheel (Quickaccess)
+   
+      flywheel_quickaccess_files:
+        description: "Enter Flywheel Quickaccess file/s to upload [file1, file2, ...]"
+        
       # Input: Textbox
       confirm_upload:
         description: "Please Confirm Upload by typing [confirm upload]"
